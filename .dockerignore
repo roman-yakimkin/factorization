@@ -1,0 +1,18 @@
+# Игнорируем сборочные артефакты
+*.o
+*.exe
+factorizer
+build/
+
+# Игнорируем IDE
+.vscode/
+.idea/
+*.swp
+
+# Игнорируем git
+.git
+.gitignore
+
+# Игнорируем документацию
+README.md
+*.md
