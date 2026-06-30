@@ -4,7 +4,7 @@
 
 #include "prime_numbers_provider.h"
 
-#include "libs/bit_sieve.h"
+#include "bit_sieve.h"
 
 namespace workers {
     std::span<uint64_t> PrimeNumbersProvider::getPrimeNumbers() {

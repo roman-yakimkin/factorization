@@ -1,6 +1,6 @@
 HOST ?= server
 
-.PHONY: build up down logs server sender clean
+.PHONY: build up down logs server sender clean test
 
 .DEFAULT_GOAL := help
 
@@ -28,7 +28,7 @@ logs:
 down:
 	docker-compose down
 
-# Стресс-тест
+# Тест на разложение на множители последовательности чисел
 simple:
 	HOST=$(HOST) docker-compose run --rm sender --mode simple
 
@@ -39,6 +39,12 @@ stress:
 # Burst тест
 burst:
 	HOST=$(HOST) docker-compose run --rm sender --mode burst --count 100
+
+# Запустить тесты
+test:
+	@mkdir -p build
+	@cd build && cmake .. && cmake --build . --target factorization_test
+	@cd build && ctest --output-on-failure
 
 # Очистка
 clean:
@@ -60,6 +66,7 @@ help: ## Показать эту справку
 	@echo "  3. make sender         # В другом терминале запустить отправитель (будут переданы несколько разных чисел)"
 	@echo "  4. make simple         # В другом терминале запустить отправитель (будут переданы числа от 1 до 1000)"
 	@echo "  5. make stress         # В другом терминале запустить отправитель (будут переданы случайные числа в течение 30 секунд с максимальной скоростью отправки)"
-	@echo "  6. make logs           # Смотреть логи"
-	@echo "  7. make down           # Остановить всё"
+	@echo "  6. make test           # Запустить unit-тесты (Google Test)"
+	@echo "  7. make logs           # Смотреть логи"
+	@echo "  8. make down           # Остановить всё"
 	@echo ""
