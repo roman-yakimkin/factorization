@@ -6,6 +6,8 @@ add_executable(factorization_test
         libs/test_concurrent_queue.cpp
         ${CMAKE_SOURCE_DIR}/src/workers/prime_numbers_provider.cpp
         workers/prime_numbers_provider_test.cpp
+        ${CMAKE_SOURCE_DIR}/src/workers/result_performer.cpp
+        workers/result_performer_test.cpp
 )
 
 target_include_directories(factorization_test PRIVATE ${CMAKE_SOURCE_DIR}/src)
