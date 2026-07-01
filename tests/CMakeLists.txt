@@ -10,6 +10,8 @@ add_executable(factorization_test
         workers/result_performer_test.cpp
         ${CMAKE_SOURCE_DIR}/src/workers/udp_receiver.cpp
         workers/udp_receiver_test.cpp
+        ${CMAKE_SOURCE_DIR}/src/workers/factorizer.cpp
+        workers/factorizer_test.cpp
 )
 
 target_include_directories(factorization_test PRIVATE ${CMAKE_SOURCE_DIR}/src)
